@@ -16,12 +16,9 @@ function timestampToISODate(timestamp) {
 function getArguments() {
   const args = process.argv.slice(2);
 
-  const defaultCurrency = "USD";
   let userCode = getArg(args, "code");
   if (!userCode || !iso4217[userCode]) {
-    console.info(
-      `No currency specified or incorrect code provided. Default currency ${defaultCurrency} will be used.`
-    );
+    return console.info(`No currency specified or incorrect code provided.`);
   }
 
   userCode = userCode || "USD";
