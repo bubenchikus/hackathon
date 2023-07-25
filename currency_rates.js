@@ -15,10 +15,9 @@ async function main() {
   );
 
   if (!dataForUserCurrency || !dataForUserCurrency.Value) {
-    console.info(
+    return console.info(
       `Sorry, data for provided currency code (${args.code}) is not available.`
     );
-    return;
   }
 
   const nominal = dataForUserCurrency.Nominal || 1;
