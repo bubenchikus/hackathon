@@ -18,14 +18,16 @@ function getArguments() {
 
   let userCode = getArg(args, "code");
   if (!userCode || !iso4217[userCode]) {
-    return console.info(`No currency specified or incorrect code provided.`);
+    console.info(`No currency specified or incorrect code provided.`);
+    return;
   }
 
   const timestamp = Date.parse(getArg(args, "date"));
   if (!timestamp) {
-    return console.info(
+    console.info(
       `No data specified or incorrect format provided. Please restart script with correct arguments.`
     );
+    return;
   }
   const userDate = timestampToISODate(timestamp);
 
