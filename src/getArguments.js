@@ -19,10 +19,11 @@ function getArguments() {
   const defaultCurrency = "USD";
   let userCode = getArg(args, "code");
   if (!userCode || !iso4217[userCode]) {
-    return console.info(
+    console.info(
       `No currency specified or incorrect code provided. Default currency ${defaultCurrency} will be used.`
     );
   }
+
   userCode = userCode || "USD";
 
   const timestamp = Date.parse(getArg(args, "date"));
