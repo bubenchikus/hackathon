@@ -17,9 +17,10 @@ async function fetchData(date) {
     if (err) throw err;
     res = result?.ValCurs?.Valute;
     if (!res) {
-      return console.info(
+      console.info(
         `Sorry, valute data for this date (${date}) is not available.`
       );
+      return;
     }
   });
 
