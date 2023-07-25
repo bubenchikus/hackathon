@@ -21,8 +21,6 @@ function getArguments() {
     return console.info(`No currency specified or incorrect code provided.`);
   }
 
-  userCode = userCode || "USD";
-
   const timestamp = Date.parse(getArg(args, "date"));
   if (!timestamp) {
     return console.info(
