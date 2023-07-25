@@ -14,6 +14,19 @@ async function main() {
     (el) => el.CharCode[0] === args.code
   );
 
-  console.log(dataForUserCurrency);
+  if (!dataForUserCurrency || !dataForUserCurrency.Value) {
+    return console.info(
+      `Sorry, data for provided currency code (${args.code}) is not available.`
+    );
+  }
+
+  const nominal = dataForUserCurrency.Nominal || 1;
+  const name = dataForUserCurrency.Name;
+
+  console.info(
+    `${args.code} ${name ? `(${name})` : ""}: ${
+      dataForUserCurrency.Value
+    } RUB за ${nominal} ед.`
+  );
 }
 main();
