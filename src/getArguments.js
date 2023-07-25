@@ -1,6 +1,5 @@
-// Все проверки на наличие и корректность аргументов командной строки будут здесь.
-
 import dateformat from "dateformat";
+import iso4217 from "./iso4217.js";
 
 function getArg(args, paramName) {
   const regex = new RegExp(`^--${paramName}=.`);
@@ -19,8 +18,8 @@ function getArguments() {
 
   const defaultCurrency = "USD";
   let userCode = getArg(args, "code");
-  if (!userCode) {
-    console.info(
+  if (!userCode || !iso4217[userCode]) {
+    return console.info(
       `No currency specified or incorrect code provided. Default currency ${defaultCurrency} will be used.`
     );
   }
@@ -28,10 +27,9 @@ function getArguments() {
 
   const timestamp = Date.parse(getArg(args, "date"));
   if (!timestamp) {
-    console.info(
+    return console.info(
       `No data specified or incorrect format provided. Please restart script with correct arguments.`
     );
-    return;
   }
   const userDate = timestampToISODate(timestamp);
 
